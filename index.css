@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(10, 28, 46);
+}
+
+#title {
+    text-align: center;
+    color: rgb(245, 255, 188);
+}
+
+#canvasDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#canvas {
+    background-color: white;
+}
+
+#buttonsDiv {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+}
