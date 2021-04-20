@@ -30,14 +30,14 @@ function FourierImage(inputMatrixFile, numConstants, numPartitions, timeSteps)
 	end
 
 	% Calculate the points from t=0 to t=1 using fourier
-	fourierPoints = zeros(timeSteps, 1);
-	for t = 1:timeSteps
-
-		for i = -numConstants/2 + 1:numConstants/2
-			fourierPoints(t) = fourierPoints(t) + c(i + numConstants/2) * exp(i * 2 * pi * 1i * t/timeSteps);
-		end
-
-	end
+    % Not including t=0 and t=1 since edge cases often break
+    % the simulation
+	fourierPoints = zeros(timeSteps-1, 1);
+	for t = 1:timeSteps-1
+        for i = -numConstants/2 + 1:numConstants/2
+            fourierPoints(t) = fourierPoints(t) + c(i + numConstants/2) * exp(i * 2 * pi * 1i * t/timeSteps);
+        end
+    end
 
 	% We now have our constants, so draw the shape
 	% Convert back to vector for easy drawing
