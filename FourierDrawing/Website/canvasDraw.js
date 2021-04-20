@@ -81,6 +81,14 @@ function endDraw(event) {
             ctx.stroke();
 
             points.push({ x: firstPoint.x, y: firstPoint.y });
+
+            // Now we must scale the points to be in [-1,1]
+            for (var i = 0; i < points.length; i++) {
+                var curPoint = points[i];
+                curPoint.x = curPoint.x / (canvas.width / 2) - 1;
+                curPoint.y = (curPoint.y / (canvas.height / 2) - 1) * -1;
+            }
+
         }
     }
     drawing = false;
@@ -122,9 +130,6 @@ We have an array of (x,y) coordinates denoting the points the define
 the drawing, we will output this to a text file to load as a matrix
 into MATLAB
 
-This output will denote values of f(t) between t=0 and t=1
-with a timestep of 0.001s, so we will have 1001 values, with f(0)=f(1)
-
 */
 
 
@@ -133,47 +138,13 @@ function downloadPoints() {
 
     var fileContents = "";
 
-    // First we must calculate the length of the drawing
-    var perim = 0;
-    for (var i = 1; i < points.length; i++) {
-        var cur = points[i];
-        var prev = points[i - 1];
-
-        perim += distance(prev, cur);
+    for (var i = 0; i < points.length; i++) {
+        fileContents += points[i].x + "," + points[i].y;
+        if (i != points.length - 1) fileContents += "\n";
     }
 
-    // Calculate the points along the perimeter at t=i/1000
-    var curInterpolationPoint = 0;
-    for (var i = 0; i < 1000; i++) {
-        var curPointX = points[curInterpolationPoint] + averageStep *
-    }
+    downloadFile("OutputPoints.txt", fileContents);
 
-    //downloadFile("OutputPoints.txt", fileContents);
-
-}
-
-function lerpAlongLine(points, totalLength, time) {
-
-    var lengthTravelled = 0;
-    var curPoint = 1;
-    var prevPoint = 0;
-
-    while (lengthTravelled < totalLength * time) {
-
-        var curDist = perim += distance(points[prevPoint], points[curPoint]);
-        lengthTravelled += curDist;
-
-    }
-
-
-}
-
-// Calculates the distance between 2 points
-function distance(pointA, pointB) {
-    var dX = pointA.x - pointB.x;
-    var dY = pointA.y - pointB.y;
-
-    return Math.sqrt(dX * dX + dY * dY);
 }
 
 // Creates and downloads a file with name [fileName] and text contents of [contents]
