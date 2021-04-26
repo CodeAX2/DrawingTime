@@ -1,15 +1,6 @@
 https://towardsdatascience.com/understanding-audio-data-fourier-transform-fft-spectrogram-and-speech-recognition-a4072d228520
-3Blue1Brown videos
-
-Ideas of where to go:
-
-- Start with fourier series, introducing drawing images using circles
-- Then talk about audio
-    - Audio is a combination of various frequencies, but how do we extract the frequencies?
-- Fourier transform!
-- Outputs a function f : frequency -> magnitude
-- Must be done over an interval, so "real-time" is usually the last few milliseconds
-- So, audio has 3 variables: time, magnitude, and frequency, but our functions only represent 2 at a time...
-- Introduct SPECTROGRAM!
-- Similar to real time, break time into time frames, around 20-30ms, but we want some overlap
-    - So make time frames 20ms, but start them every 10ms
+http://devonbryant.github.io/blog/2013/03/02/fourier-transforms/
+https://www.tek.com/blog/window-functions-spectrum-analyzers
+3Blue1Brown videos:
+https://www.youtube.com/watch?v=r6sGWTCMz2k
+https://www.youtube.com/watch?v=spUNpyF58BY
