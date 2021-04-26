@@ -6,13 +6,13 @@ function LiveFFT(audioFile)
 
     ap = audioplayer(audioData, sampleRate);
     ap.TimerFcn = @showSeconds;
-    ap.TimerPeriod = 0.002;
+    ap.TimerPeriod = 1/30;
 
     playblocking(ap);
         
     function showSeconds(ap, event)
         
-        takebackS = 0.05;
+        takebackS = .1;
         
         if ap.CurrentSample > takebackS * sampleRate + 1 && ap.CurrentSample < length(mainChannel)
             
