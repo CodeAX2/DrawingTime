@@ -16,8 +16,8 @@ time = linspace(0, length(mainChannel)/sampleRate, length(mainChannel));
 audioTransform = fft(mainChannel);
 
 % Create the spectrogram
-windowMS = 10; % The length of each window portion in MS
-overlapMS = windowMS * (1-0.5); % The offset of each window
+windowMS = 50; % The length of each window portion in MS
+overlapMS = windowMS * (1-0.75); % The offset of each window
 
 % Calculate the window length and window difference in terms of samples
 windowLength = floor(0.001 * windowMS * sampleRate);

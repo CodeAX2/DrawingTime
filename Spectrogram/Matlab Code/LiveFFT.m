@@ -12,7 +12,7 @@ function LiveFFT(audioFile)
         
     function showSeconds(ap, event)
         
-        takebackS = .2;
+        takebackS = 0.05;
         
         if ap.CurrentSample > takebackS * sampleRate + 1 && ap.CurrentSample < length(mainChannel)
             
@@ -20,9 +20,9 @@ function LiveFFT(audioFile)
             finalValues = 2/length(audioTransform) * abs(audioTransform(1:floor(length(audioTransform)/2)));
             
             clf;
-            ylim([-0.2,0.2]); hold on;
+            ylim([-200,0]); hold on;
             xlim([0,sampleRate/2]);
-            plot(linspace(0,sampleRate/2,length(finalValues)),finalValues);
+            plot(linspace(0,sampleRate/2,length(finalValues)), mag2db(finalValues));
         end
     end
 
