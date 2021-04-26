@@ -5,6 +5,8 @@ function CreateSpectrogram(audioFile)
 % audioData is an Mx2 matrix, with one side being left channel, other
 % being the right. For simplicity, we only consider the first channel
 
+sampleRate
+
 mainChannel = audioData(:,1);
 
 %mainChannel = sin(2 * pi * 3 * sort(rand(100000, 1)));
@@ -20,8 +22,8 @@ windowMS = 10; % The length of each window portion in MS
 overlapMS = windowMS * (1-0.5); % The offset of each window
 
 % Calculate the window length and window difference in terms of samples
-windowLength = 0.001 * windowMS * sampleRate;
-windowDiff = 0.001 * overlapMS * sampleRate;
+windowLength = floor(0.001 * windowMS * sampleRate);
+windowDiff = floor(0.001 * overlapMS * sampleRate);
 
 spec = [];
 
