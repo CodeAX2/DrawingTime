@@ -5,8 +5,6 @@ function CreateSpectrogram(audioFile)
 % audioData is an Mx2 matrix, with one side being left channel, other
 % being the right. For simplicity, we only consider the first channel
 
-sampleRate
-
 mainChannel = audioData(:,1);
 
 %mainChannel = sin(2 * pi * 3 * sort(rand(100000, 1)));
@@ -48,8 +46,8 @@ plot(time, mainChannel);
 
 % Plot the fourier transform of the whole wave
 figure;
-%finalValues = mag2db(2/length(audioTransform) * abs(audioTransform(1:length(audioTransform)/2)));
-finalValues = 2/length(audioTransform) * abs(audioTransform(1:length(audioTransform)/2));
+finalValues = mag2db(2/length(audioTransform) * abs(audioTransform(1:length(audioTransform)/2)));
+%finalValues = 2/length(audioTransform) * abs(audioTransform(1:length(audioTransform)/2));
 plot(linspace(0,length(finalValues),length(finalValues)),finalValues);
 
 % Plot the spectrogram
